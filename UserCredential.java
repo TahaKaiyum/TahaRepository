@@ -6,8 +6,6 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,9 +13,7 @@ import javax.persistence.Table;
 @Table(name = "user_credential")
 public class UserCredential {
 
-	@OneToMany
-	@JoinTable(name = "user_prof_credential", joinColumns = @JoinColumn(name = "username"), 
-	inverseJoinColumns = @JoinColumn(name = "prof_id"))
+	@OneToMany(mappedBy="credential")
 	private Set<UserProfile> profiles = new HashSet<UserProfile>();
 
 	public Set<UserProfile> getProfiles() {
